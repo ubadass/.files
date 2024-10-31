@@ -1,0 +1,126 @@
+$rosewater: #f5e0dc;
+$flamingo: #f2cdcd;
+$pink: #f5c2e7;
+$mauve: #cba6f7;
+$red: #f38ba8;
+$maroon: #eba0ac;
+$peach: #fab387;
+$yellow: #f9e2af;
+$green: #a6e3a1;
+$teal: #94e2d5;
+$sky: #89dceb;
+$sapphire: #74c7ec;
+$blue: #89b4fa;
+$lavender: #b4befe;
+$text: #cdd6f4;
+$subtext1: #bac2de;
+$subtext0: #a6adc8;
+$overlay2: #9399b2;
+$overlay1: #7f849c;
+$overlay0: #6c7086;
+$surface2: #585b70;
+$surface1: #45475a;
+$surface0: #313244;
+$base: #1e1e2e;
+$mantle: #181825;
+$crust: #11111b;
+
+* {
+  font-family: MesloLGS Nerd Font Mono;
+  font-weight: bold;
+}
+
+button {
+  background: transparent;
+  border: none;
+}
+
+.audio {
+  font-size: 30px;
+  color: $text;
+
+  &:hover {
+    color: $green;
+  }
+}
+
+.logo {
+  font-size: 33px;
+  color: $mauve;
+}
+
+
+.ewwbar {
+  background: transparent;
+}
+//Global Styles
+.bar {
+  background: $crust;
+  color: $text;
+  padding: 0 10px;
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+.metric scale trough highlight {
+  background-color: #D35D6E;
+  color: #000000;
+  border-radius: 10px;
+}
+
+.metric scale trough {
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.metric scale trough highlight {
+  background-color: #D35D6E;
+  color: #000000;
+  border-radius: 10px;
+}
+.metric scale trough {
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.workspaces {
+  font-size: 24px;
+}
+
+.workspaces button:hover {
+  color: $red;
+}
+
+.battery {
+
+  &.full {
+    color: $mauve;
+  }
+
+  &.charging {
+    color: $green;
+  }
+
+  &.critical {
+    color: $red;
+  }
+
+  &.normal {
+    color: $text;
+  }
+}
+
+.battery .icon {
+  font-size: 30px;
+}
+
+.time {
+  color: $blue;
+}

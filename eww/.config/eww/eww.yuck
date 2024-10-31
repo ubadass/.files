@@ -1,0 +1,97 @@
+(defwidget bar []
+  (centerbox :class "bar" :orientation "h"
+    (leftstuff)
+    (midstuff)
+    (rightstuff)
+  )
+)
+
+(defwidget leftstuff []
+  (box :halign "start" :space-evenly false :spacing 10
+    (label :class "logo" :text {""})
+    (workspaces)
+  )
+)
+
+(defwidget midstuff []
+  (box :halign "start" :space-evenly false :spacing 15
+    (label :class "time"
+       :text {formattime(EWW_TIME, "%b %d, %a %X")}
+    )
+  )
+)
+
+(defwidget rightstuff []
+  (box :class "sidestuff" :orientation "h" :spacing 20 :space-evenly false :halign "end"
+    (systray :spacing 10 :orientation "h" :prepend-new true)
+    (eventbox :class "audio"
+              :onhover 'eww update _volume="`wpctl get-volume @DEFAULT_AUDIO_SINK@`"'
+              :onclick "pavucontrol&"
+      (tooltip
+        (label :text _volume)
+        (label :class "icon" :text "")
+      )
+    )
+    (battery :capacity {EWW_BATTERY.BAT1.capacity}
+             :status {
+               EWW_BATTERY.BAT1.status == "Full" ? "full"
+                                                 : EWW_BATTERY.BAT1.status == "Charging" ? "charging"
+                                                 : EWW_BATTERY.BAT1.capacity < 20 ? "critical"
+                                                 : "normal"
+             }
+    )
+  )
+)
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "start"
+    (for entry in '[0, 1, 2, 3, 4, 5]'
+      (button 
+        :onclick "niri msg action focus-workspace ${entry + 1}" {_dice_icons[entry]}
+      )
+    )
+  )
+)
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+
+(defwidget battery [capacity status]
+   (box :class "battery ${status}" :space-evenly false :spacing 5
+    (label :class "capacity" :text {capacity})
+    (label :class "icon" :text {_battery_icons[status]})
+  )
+)
+
+(defvar _volume '')
+
+(defvar _battery_icons '{ "normal": "󱠆", "full": "", "charging": "󰊷", "critical": "󱠇"}')
+
+;(defvar _battery_icons '{ "normal": "󱢦", "full": "󱢮", "charging": "󱢪", "critical": "󱢢"}')
+
+(defvar _dice_icons '["󰇊", "󰇋", "󰇌", "󰇍", "󰇎", "󰇏"]')
+
+(defwindow ewwbar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "5px"
+                      :width "100%"
+                      :height "10px"
+                      :anchor "top center"
+            )
+  :exclusive true
+  (bar)
+)
