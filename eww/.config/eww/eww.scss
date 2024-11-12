@@ -1,0 +1,22 @@
+.text-pink{color:#f5c2e7}.text-mauve{color:#cba6f7}.text-red{color:#f38ba8}.text-maroon{color:#eba0ac}.text-peach{color:#fab387}.text-yellow{color:#f9e2af}.text-green{color:#a6e3a1}.text-teal{color:#94e2d5}.text-blue{color:#89b4fa}.text-lavender{color:#b4befe}.text-text{color:#cdd6f4}.text-subtext{color:#a6adc8}.text-overlay{color:#6c7086}.text-surface{color:#313244}.text-base{color:#1e1e2e}.text-mantle{color:#181825}.text-crust{color:#11111b}
+
+.bg-pink{background-color:#f5c2e7}.bg-mauve{background-color:#cba6f7}.bg-red{background-color:#f38ba8}.bg-maroon{background-color:#eba0ac}.bg-peach{background-color:#fab387}.bg-yellow{background-color:#f9e2af}.bg-green{background-color:#a6e3a1}.bg-teal{background-color:#94e2d5}.bg-blue{background-color:#89b4fa}.bg-lavender{background-color:#b4befe}.bg-text{background-color:#cdd6f4}.bg-subtext{background-color:#a6adc8}.bg-overlay{background-color:#6c7086}.bg-surface{background-color:#313244}.bg-base{background-color:#1e1e2e}.bg-mantle{background-color:#181825}.bg-crust{background-color:#11111b}
+
+.bar {
+  font-family: "MesloLGS Nerd Font";
+  padding: 6px;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.sink-volume {
+  &:hover {
+    color: #b4befe;
+  }
+}

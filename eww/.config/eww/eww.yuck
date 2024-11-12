@@ -1,0 +1,57 @@
+(defwidget bar []
+  (box :class "bg-crust text-text" :orientation "h"
+    (leftstuff)
+    (rightstuff)
+  )
+)
+
+(defwidget leftstuff []
+  (box :orientation "h" :space-evenly false :halign "start"
+    (datetime)
+  )
+)
+
+(defwidget rightstuff []
+  (box :orientation "h" :space-evenly false :spacing 20 :halign "end"
+    (systray :space-evenly false :spacing 15 :prepend-new true)
+    (sink_volume)
+    (battery
+      :capacity {EWW_BATTERY.BAT1.capacity}
+      :status {!matches(EWW_BATTERY.BAT1.status,  "Charging|Full") ? (EWW_BATTERY.BAT1.capacity < 20 ? "Critical" : "Normal") : EWW_BATTERY.BAT1.status}
+      :palette '{"Charging": "text-green", "Full": "text-mauve", "Critical": "text-red", "Normal": "text-subtext"}'
+    )
+  )
+)
+
+(defwidget datetime []
+    (label :class "font-bold text-peach" :text {formattime(EWW_TIME, "%b %d, %a %r")}) 
+)
+
+(defwidget battery [status capacity palette]
+  (box :class "${palette[status]}" :space-evenly false :spacing 10
+    (label :class "text-sm" :text status)
+    (label :class "font-bold" :text capacity)
+  )
+)
+
+(defwidget sink_volume []
+  (eventbox 
+    :class "sink-volume font-bold text-blue"
+    :onhover `eww update _volume="$(wpctl get-volume @DEFAULT_AUDIO_SINK@)"`
+    :onclick "pavucontrol&"
+    (label :text _volume)
+  )
+)
+
+(defvar _volume "Hover me!")
+
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "6px"
+                      :width "100%"
+                      ;:height "10px"
+                      :anchor "top center")
+  :exclusive true
+  (bar)
+)
