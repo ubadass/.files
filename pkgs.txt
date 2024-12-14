@@ -8,7 +8,6 @@ bluez
 bluez-utils
 bottom
 brightnessctl
-clang
 cliphist
 dosfstools
 efibootmgr
@@ -19,11 +18,10 @@ ffmpegthumbnailer
 firefox
 fzf
 gnome-keyring
-grub
-gtk-layer-shell
 hwdetect
 imagemagick
 imv
+iwd
 jq
 lazygit
 libnotify
@@ -38,7 +36,6 @@ man-pages
 mesa-vdpau
 mpv
 neovim
-network-manager-applet
 niri
 noto-fonts-cjk
 noto-fonts-emoji
@@ -59,9 +56,11 @@ qt6ct
 sof-firmware
 starship
 stow
+systemd-resolvconf
 ttf-meslo-nerd
 unzip
 wget
+wireguard-tools
 wireplumber
 xdg-desktop-portal-gnome
 xdg-desktop-portal-gtk
